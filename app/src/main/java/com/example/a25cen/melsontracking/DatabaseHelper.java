@@ -90,6 +90,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private final String SQL_GET_STARS = "SELECT DISTINCT P.Fname, P.Lname" +
             " FROM Person as P, Stars as S, Movie as M" +
             " WHERE P.PID = S.Star and Movie = ";
+    private final String SQL_GET_WRITERS = "SELECT DISTINCT P.Fname, P.Lname"+
+            " FROM Person as P, Writes as W, Movie as M"+
+            " WHERE P.PID = W.Writer and Movie = ";
 
     private final String SQL_GET_GENDER = "SELECT Gender FROM Person WHERE PID = ";
 
@@ -465,6 +468,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             case "Stars":
                 sqlQuery = SQL_GET_STARS + position;
                 break;
+            case "Writer":
+                sqlQuery = SQL_GET_WRITERS + position;
+                break;
         }
         Cursor c = db.rawQuery(sqlQuery, null);
         if(c.moveToFirst()) {
@@ -472,7 +478,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 peopleInvolved += c.getString(c.getColumnIndex("P.Fname"));
                 peopleInvolved += " ";
                 peopleInvolved += c.getString(c.getColumnIndex("P.Lname"));
-                if (table == "Stars") peopleInvolved += ", ";
+                peopleInvolved += ", ";
 
             }while(c.moveToNext());
         }

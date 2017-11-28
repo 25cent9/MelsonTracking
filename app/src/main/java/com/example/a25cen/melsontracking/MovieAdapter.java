@@ -54,8 +54,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         catch (SQLiteException ex) {
             holder.song.setText("");
         }
-        holder.director.setText("Director: "+db.getAllPeopleInvolved("Director", MID));
-        holder.stars.setText("Stars: "+ db.getAllPeopleInvolved("Stars", MID));
+        holder.director.setText("Director(s): "+db.getAllPeopleInvolved("Director", MID));
+        holder.stars.setText("Star(s): "+ db.getAllPeopleInvolved("Stars", MID));
+        holder.writers.setText("Writer(s): "+db.getAllPeopleInvolved("Writer", MID));
         //Defining the actions that are performed when the delete button is pressed.
         //When pressed the movie will be removed from the database as well as the recycler view. The card will slide to the right as well
         holder.delteButton.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +90,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     //Creating the class for the MovieViewHolder
     //This class will define all of the views in the card
     public static class MovieViewHolder extends RecyclerView.ViewHolder{
-        TextView title, song, director, stars;
+        TextView title, song, director, stars, writers;
         Button delteButton;
         //Constructor for the view holder
         public MovieViewHolder(View view) {
@@ -97,6 +98,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             title = view.findViewById(R.id.movieTitle);
             song = view.findViewById(R.id.textSong);
             director = view.findViewById(R.id.textDirectors);
+            writers = view.findViewById(R.id.textWriters);
             stars = view.findViewById(R.id.textStars);
             delteButton = view.findViewById(R.id.deleteMovie);
 

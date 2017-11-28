@@ -46,6 +46,15 @@
                     android:textColor="@android:color/black"
                     />
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textWriters"
+                    style="@style/DialogTextView"
+                    android:text="Writer(s)"
+                    android:textSize="18sp"
+                    android:paddingLeft="16dp"
+                    />
+                <TextView
                     android:id="@+id/textStars"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
