@@ -16,7 +16,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
@@ -102,8 +104,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
                 movieRuntime.setText("Runtime: "+String.valueOf(movieCard.getRuntime()
                 )+" mins");
                 if(movieCard.getBudget() != -1) {
-                    movieBudget.setText("Budget: $"+String.valueOf(movieCard.getBudget
-                            ()));
+                    movieBudget.setText("Budget: $"+ NumberFormat.getInstance(Locale.US).format(movieCard.getBudget()));
                 }
                 else{
                     movieBudget.setText("Budget: $0");
